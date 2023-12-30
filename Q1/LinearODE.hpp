@@ -11,8 +11,8 @@ public:
 
     void SetA(const double a);
 
-    void ComputeF(const double t, const double u, double& f);
-    void ComputeAnalyticSolution( const double t, double& u );
+    void ComputeF(const double t, const double u, double& f) const;
+    void ComputeAnalyticSolution( const double t, double& u ) const;
 
 protected: 
     double mA;

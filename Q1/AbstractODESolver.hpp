@@ -7,12 +7,25 @@ class AbstractODESolver
 {
 
 public:
+    AbstractODESolver();
+    AbstractODESolver(double mFinalTime,
+                      double minitialTime,
+                      ODEInterface* mpODESystem,
+                      double mState,
+                      double mStepSize);
+
+    void SetVariables(double mfinalTime,
+                      double minitialTime,
+                      ODEInterface* mpODESystem,
+                      double mState,
+                      double mStepSize);
+
     virtual void Solve() = 0;
     virtual ~AbstractODESolver();
 
 protected:
-    double mfinalTime;
-    double minitialTime;
+    double mFinalTime;
+    double mInitialTime;
     ODEInterface* mpODESystem;
     double mState;
     double mStepSize;
