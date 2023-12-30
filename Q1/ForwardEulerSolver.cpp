@@ -9,9 +9,9 @@ ForwardEulerSolver::ForwardEulerSolver(ODEInterface& anODESystem,
                                        const double initialTime,
                                        const double finalTime,
                                        const double stepSize,
-                                       const std::string outputFileName = "output.dat",
-                                       const int saveGap = 1,
-                                       const int printGap = 1)
+                                       const std::string outputFileName,
+                                       const int saveGap,
+                                       const int printGap)
     : AbstractODESolver(finalTime, initialTime, &anODESystem, initialState, stepSize)
 {
     SetOutputSettings(outputFileName, saveGap, printGap);

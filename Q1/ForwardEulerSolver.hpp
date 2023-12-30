@@ -1,5 +1,5 @@
 #ifndef forward_euler_header
-#define forward_euler_heade
+#define forward_euler_header
 
 #include "AbstractODESolver.hpp"
 #include <string>
