@@ -1,9 +1,11 @@
 #include "AbstractODESolver.hpp"
 
+// Default constructor
 AbstractODESolver::AbstractODESolver()
 {
 }
 
+// Constructor that sets protected variables
 AbstractODESolver::AbstractODESolver(double finalTime,
                                      double initialTime,
                                      ODEInterface* pODESystem,
@@ -13,6 +15,7 @@ AbstractODESolver::AbstractODESolver(double finalTime,
     SetVariables(finalTime, initialTime, pODESystem, state, stepSize);
 }
 
+// Function to set protected variables
 void AbstractODESolver::SetVariables(
     double finalTime,
     double initialTime,
@@ -27,6 +30,7 @@ void AbstractODESolver::SetVariables(
     mStepSize = stepSize;
 }
 
+// Virtual Destructor Function
 AbstractODESolver::~AbstractODESolver()
 {
     // Do I need to destruct the pointer?

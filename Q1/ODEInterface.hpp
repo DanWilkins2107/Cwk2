@@ -1,7 +1,7 @@
 #ifndef ODEINTERFACEHEADERDEF
 #define ODEINTERFACEHEADERDEF
 
-// Interface class for fisrt order ODE IVPs
+// Interface class for first order ODE IVPs
 
 class ODEInterface
 {
