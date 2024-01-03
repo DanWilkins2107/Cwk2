@@ -5,16 +5,16 @@
 
 class LinearODE : public ODEInterface
 {
-public:
+  public:
     LinearODE();
     LinearODE(const double a);
 
     void SetA(const double a);
 
     void ComputeF(const double t, const double u, double& f) const;
-    void ComputeAnalyticSolution( const double t, double& u ) const;
+    void ComputeAnalyticSolution(const double t, double& u) const;
 
-protected: 
+  protected:
     double mA;
 };
 

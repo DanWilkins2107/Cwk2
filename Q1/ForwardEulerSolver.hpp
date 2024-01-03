@@ -6,7 +6,7 @@
 
 class ForwardEulerSolver : public AbstractODESolver
 {
-public:
+  public:
     ForwardEulerSolver(ODEInterface& anODESystem,
                        const double initialState,
                        const double initialTime,
@@ -20,7 +20,7 @@ public:
 
     void SetOutputSettings(std::string outputFileName, int saveGap, int printGap);
 
-protected:
+  protected:
     std::string mOutputFileName;
     int mSaveGap;
     int mPrintGap;

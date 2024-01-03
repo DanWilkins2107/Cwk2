@@ -22,7 +22,7 @@ void ForwardEulerSolver::Solve()
     double t_n = mInitialTime;
     double u_n = mState;
     int n = 0;
-    double p_f;
+    double f;
 
     std::ofstream write_file;
     write_file.open(mOutputFileName);
@@ -34,11 +34,11 @@ void ForwardEulerSolver::Solve()
 
     while (t_n < mFinalTime)
     {
-        mpODESystem->ComputeF(t_n, u_n, p_f);
+        mpODESystem->ComputeF(t_n, u_n, f);
 
         t_n += mStepSize;
         n += 1;
-        u_n += mStepSize * p_f;
+        u_n += mStepSize * f;
 
         if (n % mSaveGap == 0)
         {

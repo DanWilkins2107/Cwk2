@@ -6,8 +6,8 @@
 class AbstractODESolver
 {
 
-public:
-    //Overriden default constructor
+  public:
+    // Overriden default constructor
     AbstractODESolver();
 
     // Constructor that takes variables
@@ -30,7 +30,7 @@ public:
     // Virtual destructor function
     virtual ~AbstractODESolver();
 
-protected:
+  protected:
     double mFinalTime;
     double mInitialTime;
     ODEInterface* mpODESystem;

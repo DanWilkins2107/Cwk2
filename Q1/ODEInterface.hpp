@@ -6,7 +6,7 @@
 class ODEInterface
 {
 
-public:
+  public:
     // Compute right-hand side (pure virtual)
     virtual void ComputeF(const double t, const double u, double& f) const = 0;
 
