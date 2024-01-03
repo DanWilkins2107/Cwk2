@@ -30,6 +30,7 @@ class AbstractODESolver
     // Virtual destructor function
     virtual ~AbstractODESolver();
 
+  // Protected variables that need to be accessed in derived classes
   protected:
     double mFinalTime;
     double mInitialTime;

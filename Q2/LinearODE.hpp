@@ -12,7 +12,9 @@ public:
     void SetA(const double a);
 
     void ComputeF(const double t, const double u, double& f) const;
+    void ComputeG(const double t, const double u, double& g) const;
     void ComputeAnalyticSolution( const double t, double& u ) const;
+    void GetA(double& a) const;
 
 protected: 
     double mA;

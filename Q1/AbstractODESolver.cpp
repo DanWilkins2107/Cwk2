@@ -33,5 +33,5 @@ void AbstractODESolver::SetVariables(
 // Virtual Destructor Function
 AbstractODESolver::~AbstractODESolver()
 {
-    // Do I need to destruct the pointer?
+    delete mpODESystem;
 }
