@@ -3,24 +3,33 @@ from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 import matplotlib.pyplot as plt
 
-t,u = np.loadtxt("output.dat", unpack=True)        
+#Q2i Code ---------------------------------
+def exactUVals(t):
+    return (np.exp(-1*t) + np.sin(t) - np.cos(t)) / 2
 
-mpl.rcParams['legend.fontsize'] = 10
+t,u = np.loadtxt("output_2bi.dat", unpack=True)
+t_exact = np.linspace(0, 10, 1001)
+u_exact = exactUVals(t_exact)  
 
 plt.figure(1)
-ax1 = plt.subplot(211)
-ax1.plot(t, u)
+plt.plot(t_exact, u_exact, color="blue", label="Exact solution")
+plt.plot(t, u, color="red", label="Approximation")
+plt.legend()
 plt.xlabel("t")
 plt.ylabel("u(t)")
 plt.title("Approximation to ODE")
 
-dt,err = np.loadtxt("errors.dat", unpack=True)        
+print(t_exact[-1], u_exact[-1])
+print(t[-1], u[-1])
 
-ax2 = plt.subplot(212)
-ax2.loglog(dt, err, '.')
-plt.legend(['Numerical error'])
-ax2.grid(True)
-plt.xlabel("dt")
-plt.ylabel("Error")
+# Q2ii Code ---------------------------------
+
+dt,err = np.loadtxt("output_2bii_errors.dat", unpack=True)      
+plt.figure(2)
+plt.loglog(dt, err, '.')
+plt.grid(True)
+plt.xlabel("log(Step Size)")
+plt.ylabel("log(Error)")
+plt.title("Errors for Various Step Sizes")
 
 plt.show()

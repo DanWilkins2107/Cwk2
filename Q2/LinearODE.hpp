@@ -5,18 +5,25 @@
 
 class LinearODE : public ODEInterface
 {
-public:
+  public:
+    // Overwritten default constructor
     LinearODE();
+    // Constructor that takes in value of mA
     LinearODE(const double a);
 
+    // SetA
     void SetA(const double a);
 
+    // Function to Compute F
     void ComputeF(const double t, const double u, double& f) const;
-    void ComputeG(const double t, const double u, double& g) const;
-    void ComputeAnalyticSolution( const double t, double& u ) const;
+
+    // Function to get the exact solution for time t
+    void ComputeAnalyticSolution(const double t, double& u) const;
+
+    // Function to access mA
     void GetA(double& a) const;
 
-protected: 
+  protected:
     double mA;
 };
 

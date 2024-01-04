@@ -12,11 +12,11 @@ int main()
     // Creating ODE
     ODEInterface* p_linear_ode = new LinearODE(-1);
 
-    // Solving ODE using forward Euler method
+    // Solving ODE using Forward Euler method
     ForwardEulerSolver* p_euler_solver_i = new ForwardEulerSolver(*p_linear_ode, 0.0, 0.0, 10.0, 0.05, "output_1di.dat");
     p_euler_solver_i->Solve();
 
-    // Delete memory
+    // Deallocate memory
     delete p_euler_solver_i;
 
     // Part ii

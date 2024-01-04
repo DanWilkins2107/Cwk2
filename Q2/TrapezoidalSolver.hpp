@@ -7,6 +7,10 @@
 class TrapezoidalSolver : public AbstractODESolver
 {
   public:
+    // Overridden default constructor
+    TrapezoidalSolver();
+
+    // Constructor that takes in variables
     TrapezoidalSolver(ODEInterface& anODESystem,
                       const double initialState,
                       const double initialTime,
@@ -16,11 +20,13 @@ class TrapezoidalSolver : public AbstractODESolver
                       const int saveGap = 1,
                       const int printGap = 1);
 
+    // Function that approximates the ODE.
     void Solve();
 
+    // Function that saves the output settings.
     void SetOutputSettings(std::string outputFileName, int saveGap, int printGap);
 
-  protected:
+  private:
     std::string mOutputFileName;
     int mSaveGap;
     int mPrintGap;
