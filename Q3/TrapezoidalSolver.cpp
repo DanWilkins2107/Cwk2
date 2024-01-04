@@ -64,7 +64,7 @@ void TrapezoidalSolver::Solve()
 
         // Find g and add to the ODE
         double g;
-        mpODESystem->ComputeG(t_n, g);
+        mpODESystem->ComputeF(t_n, 0, g);
         u_n += mStepSize * g * 0.5;
 
         // Divide through by the sum on left hand side

@@ -10,9 +10,6 @@ class ODEInterface
     // Compute right-hand side (pure virtual)
     virtual void ComputeF(const double t, const double u, double& f) const = 0;
 
-    // Compute g(t) (pure virtual)
-    virtual void ComputeG(const double t, double& g) const = 0;
-
     // Get A in linearODEs
     virtual void GetA(double& a) const = 0;
 
