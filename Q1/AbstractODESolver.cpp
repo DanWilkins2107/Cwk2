@@ -33,5 +33,4 @@ void AbstractODESolver::SetVariables(
 // Virtual Destructor Function
 AbstractODESolver::~AbstractODESolver()
 {
-    delete mpODESystem;
 }
