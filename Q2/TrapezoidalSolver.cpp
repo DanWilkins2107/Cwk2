@@ -87,7 +87,7 @@ void TrapezoidalSolver::Solve()
 }
 
 // Function that saves the private variables.
-void TrapezoidalSolver::SetOutputSettings(std::string outputFileName, int saveGap, int printGap)
+void TrapezoidalSolver::SetOutputSettings(const std::string outputFileName, const int saveGap, const int printGap)
 {
     mOutputFileName = outputFileName;
     mSaveGap = saveGap;

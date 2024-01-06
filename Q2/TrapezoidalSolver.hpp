@@ -24,7 +24,7 @@ class TrapezoidalSolver : public AbstractODESolver
     void Solve();
 
     // Function that saves the output settings.
-    void SetOutputSettings(std::string outputFileName, int saveGap, int printGap);
+    void SetOutputSettings(const std::string outputFileName, const int saveGap, const int printGap);
 
   private:
     std::string mOutputFileName;

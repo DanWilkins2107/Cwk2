@@ -2,6 +2,7 @@
 #define forward_euler_header
 
 #include "AbstractODESolver.hpp"
+#include "Vector.hpp"
 #include <string>
 
 class ForwardEulerSolver : public AbstractODESolver
@@ -12,7 +13,7 @@ class ForwardEulerSolver : public AbstractODESolver
 
     // Constructor that takes in variables
     ForwardEulerSolver(ODEInterface& anODESystem,
-                       const double initialState,
+                       const Vector& initialState,
                        const double initialTime,
                        const double finalTime,
                        const double stepSize,

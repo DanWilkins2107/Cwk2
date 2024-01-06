@@ -23,6 +23,7 @@ int main()
     // Selecting error values to use
     double values[7] = {0.005, 0.01, 0.02, 0.05, 0.1, 0.25, 0.5};
 
+    // Setting up file to output the errors into
     std::ofstream write_file;
     write_file.open("output_2bii_errors.dat");
     assert(write_file.is_open());

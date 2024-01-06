@@ -11,18 +11,18 @@ class AbstractODESolver
     AbstractODESolver();
 
     // Constructor that takes variables
-    AbstractODESolver(double mFinalTime,
-                      double minitialTime,
+    AbstractODESolver(const double mFinalTime,
+                      const double minitialTime,
                       ODEInterface* mpODESystem,
-                      double mState,
-                      double mStepSize);
+                      const double mState,
+                      const double mStepSize);
 
     // Modify protected variables
-    void SetVariables(double mfinalTime,
-                      double minitialTime,
+    void SetVariables(const double mfinalTime,
+                      const double minitialTime,
                       ODEInterface* mpODESystem,
-                      double mState,
-                      double mStepSize);
+                      const double mState,
+                      const double mStepSize);
 
     // Virtual Solve function to be redefined
     virtual void Solve() = 0;

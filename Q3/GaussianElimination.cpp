@@ -1,3 +1,6 @@
+#include "Matrix.hpp"
+#include "Vector.hpp"
+
 // Solve linear system using Gaussian elimination without pivoting
 void GaussianElimination(Matrix& p_A, Vector& p_p, Vector& p_f)
 {

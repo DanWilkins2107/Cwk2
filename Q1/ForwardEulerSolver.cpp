@@ -70,7 +70,7 @@ void ForwardEulerSolver::Solve()
 }
 
 // Function to set the print and file settings
-void ForwardEulerSolver::SetOutputSettings(std::string outputFileName, int saveGap, int printGap)
+void ForwardEulerSolver::SetOutputSettings(const std::string outputFileName, const int saveGap, const int printGap)
 {
     mOutputFileName = outputFileName;
     mSaveGap = saveGap;

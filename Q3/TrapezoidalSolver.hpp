@@ -12,7 +12,7 @@ class TrapezoidalSolver : public AbstractODESolver
 
     // Constructor that takes in variables
     TrapezoidalSolver(ODEInterface& anODESystem,
-                      const double initialState,
+                      Vector& initialState,
                       const double initialTime,
                       const double finalTime,
                       const double stepSize,

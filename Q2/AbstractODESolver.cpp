@@ -6,22 +6,22 @@ AbstractODESolver::AbstractODESolver()
 }
 
 // Constructor that sets protected variables
-AbstractODESolver::AbstractODESolver(double finalTime,
-                                     double initialTime,
+AbstractODESolver::AbstractODESolver(const double finalTime,
+                                     const double initialTime,
                                      ODEInterface* pODESystem,
-                                     double state,
-                                     double stepSize)
+                                     const double state,
+                                     const double stepSize)
 {
     SetVariables(finalTime, initialTime, pODESystem, state, stepSize);
 }
 
 // Function to set protected variables
 void AbstractODESolver::SetVariables(
-    double finalTime,
-    double initialTime,
+    const double finalTime,
+    const double initialTime,
     ODEInterface* pODESystem,
-    double state,
-    double stepSize)
+    const double state,
+    const double stepSize)
 {
     mFinalTime = finalTime;
     mInitialTime = initialTime;

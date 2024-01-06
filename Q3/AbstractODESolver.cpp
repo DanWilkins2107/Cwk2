@@ -1,4 +1,5 @@
 #include "AbstractODESolver.hpp"
+#include "Vector.hpp"
 
 // Default constructor
 AbstractODESolver::AbstractODESolver()
@@ -9,7 +10,7 @@ AbstractODESolver::AbstractODESolver()
 AbstractODESolver::AbstractODESolver(double finalTime,
                                      double initialTime,
                                      ODEInterface* pODESystem,
-                                     double state,
+                                     Vector* state,
                                      double stepSize)
 {
     SetVariables(finalTime, initialTime, pODESystem, state, stepSize);
@@ -20,7 +21,7 @@ void AbstractODESolver::SetVariables(
     double finalTime,
     double initialTime,
     ODEInterface* pODESystem,
-    double state,
+    Vector* state,
     double stepSize)
 {
     mFinalTime = finalTime;

@@ -24,7 +24,7 @@ class ForwardEulerSolver : public AbstractODESolver
     void Solve();
 
     // Function to set the print and file settings
-    void SetOutputSettings(std::string outputFileName, int saveGap, int printGap);
+    void SetOutputSettings(const std::string outputFileName, const int saveGap, const int printGap);
 
   // Variables are private as no derived class needs access
   private:
