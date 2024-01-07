@@ -64,13 +64,13 @@ void ForwardEulerSolver::Solve()
         // Save values to file depending on mSaveGap
         if (n % mSaveGap == 0)
         {
-            write_file << t_n << " " << p_u_n << "\n";
+            write_file << t_n << " " << *p_u_n << "\n";
         }
 
         // Print values depending on mPrintGap
         if (n % mPrintGap == 0)
         {
-            std::cout << "t_" << n << " = " << t_n << "   u_" << n << " = " << p_u_n << std::endl;
+            std::cout << "t_" << n << " = " << t_n << "   u_" << n << " = " << *p_u_n << std::endl;
         }
     }
 
