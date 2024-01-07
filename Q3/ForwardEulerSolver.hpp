@@ -17,6 +17,8 @@ class ForwardEulerSolver : public AbstractODESolver
                        const double initialTime,
                        const double finalTime,
                        const double stepSize,
+                       const int timeSteps,
+                       const int spaceSteps,
                        const std::string outputFileName = "output.dat",
                        const int saveGap = 1,
                        const int printGap = 1);
@@ -27,7 +29,7 @@ class ForwardEulerSolver : public AbstractODESolver
     // Function to set the print and file settings
     void SetOutputSettings(std::string outputFileName, int saveGap, int printGap);
 
-  // Variables are private as no derived class needs access
+    // Variables are private as no derived class needs access
   private:
     std::string mOutputFileName;
     int mSaveGap;

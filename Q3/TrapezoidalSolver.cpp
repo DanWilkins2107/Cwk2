@@ -10,18 +10,20 @@ TrapezoidalSolver::TrapezoidalSolver()
 {
 }
 
-// Main constructor
+// Main Constructor to be Called
 TrapezoidalSolver::TrapezoidalSolver(ODEInterface& anODESystem,
-                                     Vector& initialState,
+                                     const Vector& initialState,
                                      const double initialTime,
                                      const double finalTime,
                                      const double stepSize,
+                                     const int timeSteps,
+                                     const int spaceSteps,
                                      const std::string outputFileName,
                                      const int saveGap,
                                      const int printGap)
-    : AbstractODESolver(finalTime, initialTime, &anODESystem, &initialState, stepSize)
+    : AbstractODESolver(finalTime, initialTime, &anODESystem, &initialState, stepSize, timeSteps, spaceSteps)
 {
-    // Sets all the private variables
+    // Set the private variables
     SetOutputSettings(outputFileName, saveGap, printGap);
 }
 
@@ -31,7 +33,7 @@ void TrapezoidalSolver::Solve()
 
     // Initialises t_n and u_n
     double t_n = mInitialTime;
-    Vector* p_u_n = mState;
+    Vector* p_u_n = new Vector(*mState);
     int vec_size = p_u_n->GetSize();
     int n = 0;
 
@@ -47,7 +49,7 @@ void TrapezoidalSolver::Solve()
 
     // Find the value of a
     Matrix* A;
-    mpODESystem->GetA(*A);
+    mpODESystem->ComputeMatrix(*A);
 
     // Loop until t_n exceeds the final time.
     while (t_n < mFinalTime)
@@ -82,8 +84,6 @@ void TrapezoidalSolver::Solve()
             std::cout << "t_" << n << " = " << t_n << "   u_" << n << " = " << p_u_n << std::endl;
         }
     }
-
-
 
     // Close the file
     write_file.close();

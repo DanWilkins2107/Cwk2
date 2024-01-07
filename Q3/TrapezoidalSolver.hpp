@@ -12,10 +12,12 @@ class TrapezoidalSolver : public AbstractODESolver
 
     // Constructor that takes in variables
     TrapezoidalSolver(ODEInterface& anODESystem,
-                      Vector& initialState,
+                      const Vector& initialState,
                       const double initialTime,
                       const double finalTime,
                       const double stepSize,
+                      const int timeSteps,
+                      const int spaceSteps,
                       const std::string outputFileName = "output.dat",
                       const int saveGap = 1,
                       const int printGap = 1);

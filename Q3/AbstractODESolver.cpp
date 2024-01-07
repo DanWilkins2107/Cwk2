@@ -7,28 +7,34 @@ AbstractODESolver::AbstractODESolver()
 }
 
 // Constructor that sets protected variables
-AbstractODESolver::AbstractODESolver(double finalTime,
-                                     double initialTime,
+AbstractODESolver::AbstractODESolver(const double finalTime,
+                                     const double initialTime,
                                      ODEInterface* pODESystem,
-                                     Vector* state,
-                                     double stepSize)
+                                     const Vector* state,
+                                     const double stepSize, 
+                                     const int timeSteps, 
+                                     const int spaceSteps)
 {
-    SetVariables(finalTime, initialTime, pODESystem, state, stepSize);
+    SetVariables(finalTime, initialTime, pODESystem, state, stepSize, timeSteps, spaceSteps);
 }
 
 // Function to set protected variables
 void AbstractODESolver::SetVariables(
-    double finalTime,
-    double initialTime,
+    const double finalTime,
+    const double initialTime,
     ODEInterface* pODESystem,
-    Vector* state,
-    double stepSize)
+    const Vector* state,
+    const double stepSize, 
+    const int timeSteps,
+    const int spaceSteps)
 {
     mFinalTime = finalTime;
     mInitialTime = initialTime;
     mpODESystem = pODESystem;
     mState = state;
     mStepSize = stepSize;
+    mTimeSteps = timeSteps;
+    mSpaceSteps = spaceSteps;
 }
 
 // Virtual Destructor Function

@@ -1,6 +1,7 @@
 #include "ForwardEulerSolver.hpp"
 #include "Vector.hpp"
 #include <cassert>
+#include <cmath>
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -16,10 +17,12 @@ ForwardEulerSolver::ForwardEulerSolver(ODEInterface& anODESystem,
                                        const double initialTime,
                                        const double finalTime,
                                        const double stepSize,
+                                       const int timeSteps,
+                                       const int spaceSteps,
                                        const std::string outputFileName,
                                        const int saveGap,
                                        const int printGap)
-    : AbstractODESolver(finalTime, initialTime, &anODESystem, initialState, stepSize)
+    : AbstractODESolver(finalTime, initialTime, &anODESystem, &initialState, stepSize, timeSteps, spaceSteps)
 {
     // Set the private variables
     SetOutputSettings(outputFileName, saveGap, printGap);
@@ -30,7 +33,7 @@ void ForwardEulerSolver::Solve()
 {
     // Setting up initial values for t_n, n and u_n
     double t_n = mInitialTime;
-    Vector* p_u_n = mState;
+    Vector* p_u_n = new Vector(*mState);
     int vec_size = p_u_n->GetSize();
     int n = 0;
 
@@ -49,6 +52,9 @@ void ForwardEulerSolver::Solve()
         // Find out what f is
         Vector p_f(vec_size);
         mpODESystem->ComputeF(t_n, *p_u_n, p_f);
+
+        // Apply Dirichlet Boundary Conditions
+        mpODESystem->ApplyDirichlet(t_n, p_f);
 
         // Find u_n+1, t_n+1 and n
         t_n += mStepSize;
@@ -69,6 +75,18 @@ void ForwardEulerSolver::Solve()
     }
 
     write_file.close();
+
+    // Find the discrete norm of the error
+    double error;
+    Vector exact_solution(vec_size);
+    mpODESystem->ComputeAnalyticSolution(mFinalTime, exact_solution);
+    for (int i = 0; i < vec_size; i++)
+    {
+        error += pow(p_u_n->Read(i) - exact_solution[i], 2);
+    }
+    error /= double(vec_size);
+    error = sqrt(error);
+    std::cout << "Discrete norm of the error: " << error << std::endl;
 }
 
 // Function to set the print and file settings
