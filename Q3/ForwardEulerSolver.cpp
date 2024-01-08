@@ -44,14 +44,18 @@ void ForwardEulerSolver::Solve()
 
     // Printing header and initial values, as well as writing to file t_0 and u(t_0)
     std::cout << "Iterations" << std::endl;
-    write_file << t_n << " " << p_u_n << "\n";
-    std::cout << "t_0 = " << t_n << "  u_0 = " << p_u_n << std::endl;
+    write_file << t_n << "\n";
+    write_file << *p_u_n << "\n";
+    std::cout << "t_0 = " << t_n << "  u_0 = " << *p_u_n << std::endl;
 
     while (t_n < mFinalTime)
     {
         // Find out what f is
         Vector p_f(vec_size);
         mpODESystem->ComputeF(t_n, *p_u_n, p_f);
+        if (std::floor(t_n) - t_n < 0.0001) {
+            std::cout << p_f << std::endl;
+        }
 
         // Apply Dirichlet Boundary Conditions
         mpODESystem->ApplyDirichlet(t_n, p_f);
@@ -64,7 +68,8 @@ void ForwardEulerSolver::Solve()
         // Save values to file depending on mSaveGap
         if (n % mSaveGap == 0)
         {
-            write_file << t_n << " " << *p_u_n << "\n";
+            write_file << t_n << "\n";
+            write_file << *p_u_n << "\n";
         }
 
         // Print values depending on mPrintGap

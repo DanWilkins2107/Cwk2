@@ -47,7 +47,7 @@ void TrapezoidalSolver::Solve()
     write_file << t_n << " " << p_u_n << "\n";
     std::cout << "t_0 = " << t_n << "  u_0 = " << p_u_n << std::endl;
 
-    // Find the value of a
+    // Compute matrix A
     Matrix* A;
     mpODESystem->ComputeMatrix(*A);
 
